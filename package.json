@@ -1,0 +1,19 @@
+{
+  "name": "mi-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
