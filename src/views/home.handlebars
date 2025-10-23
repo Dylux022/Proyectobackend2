@@ -1,0 +1,14 @@
+
+<h1>Home - Lista de productos </h1>
+
+{{#if products.length}}
+  {{#each products}}
+    <div class="card">
+      <strong>{{this.title}}</strong> — ${{this.price}}
+      <div><small>ID: {{this.id}}</small></div>
+      <div><small>Categoría: {{this.category}}</small></div>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No hay productos.</p>
+{{/if}}

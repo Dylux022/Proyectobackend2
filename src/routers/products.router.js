@@ -4,7 +4,7 @@ const ProductManager = require('../managers/ProductManager');
 const router = express.Router();
 const pm = new ProductManager();
 
-// GET /api/products/  -> listar todos
+
 router.get('/', async (req, res) => {
   try {
     const products = await pm.getProducts();
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /api/products/:pid  -> producto por id
+
 router.get('/:pid', async (req, res) => {
   try {
     const product = await pm.getProductById(req.params.pid);
@@ -25,7 +25,7 @@ router.get('/:pid', async (req, res) => {
   }
 });
 
-// POST /api/products/  -> agregar producto
+
 router.post('/', async (req, res) => {
   try {
     const {
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
       thumbnails = []
     } = req.body;
 
-    // validaciones básicas
+    
     if (!title || !description || !code || typeof price === 'undefined' || typeof stock === 'undefined' || !category) {
       return res.status(400).json({ error: 'Faltan campos requeridos (title, description, code, price, stock, category)' });
     }
@@ -61,10 +61,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/products/:pid  -> actualizar producto (no cambiar id)
+
 router.put('/:pid', async (req, res) => {
   try {
-    // evitar que el id venga en el body e intente cambiarse
+   
     if (req.body.id) delete req.body.id;
     const updated = await pm.updateProduct(req.params.pid, req.body);
     if (!updated) return res.status(404).json({ error: 'Producto no encontrado' });
@@ -74,7 +74,7 @@ router.put('/:pid', async (req, res) => {
   }
 });
 
-// DELETE /api/products/:pid  -> eliminar producto
+
 router.delete('/:pid', async (req, res) => {
   try {
     const ok = await pm.deleteProduct(req.params.pid);

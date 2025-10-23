@@ -1,25 +1,16 @@
 [
   {
-    "id": "prod1",
-    "title": "Ciclomotor Zanella ZB 110",
-    "description": "Ciclomotor Zanella ZB 110, motor 4 tiempos, ideal para ciudad.",
-    "code": "ZB110",
-    "price": 150000,
-    "status": true,
-    "stock": 10,
-    "category": "ciclomotores",
-    "thumbnails": ["/img/zanella_zb110.jpg"]
-  },
-  {
     "id": "prod2",
-    "title": "Ciclomotor Garelli Basic 100",
-    "description": "Ciclomotor Garelli, diseño clásico, motor 2 tiempos.",
-    "code": "GB100",
-    "price": 120000,
+    "title": "zanella zb110",
+    "description": " motor confiable y económico para ciudad.",
+    "code": "KK100",
+    "price": 110000,
     "status": true,
-    "stock": 8,
+    "stock": 5,
     "category": "ciclomotores",
-    "thumbnails": ["/img/garelli_basic100.jpg"]
+    "thumbnails": [
+      "/img/kenia_k100.jpg"
+    ]
   },
   {
     "id": "prod3",
@@ -30,7 +21,9 @@
     "status": true,
     "stock": 5,
     "category": "ciclomotores",
-    "thumbnails": ["/img/kenia_k100.jpg"]
+    "thumbnails": [
+      "/img/kenia_k100.jpg"
+    ]
   },
   {
     "id": "prod4",
@@ -41,7 +34,9 @@
     "status": true,
     "stock": 7,
     "category": "ciclomotores",
-    "thumbnails": ["/img/juki_j110.jpg"]
+    "thumbnails": [
+      "/img/juki_j110.jpg"
+    ]
   },
   {
     "id": "prod5",
@@ -52,7 +47,9 @@
     "status": true,
     "stock": 15,
     "category": "accesorios",
-    "thumbnails": ["/img/casco_dylux.jpg"]
+    "thumbnails": [
+      "/img/casco_dylux.jpg"
+    ]
   },
   {
     "id": "prod6",
@@ -63,7 +60,9 @@
     "status": true,
     "stock": 20,
     "category": "accesorios",
-    "thumbnails": ["/img/guantes_pro.jpg"]
+    "thumbnails": [
+      "/img/guantes_pro.jpg"
+    ]
   },
   {
     "id": "prod7",
@@ -74,7 +73,9 @@
     "status": true,
     "stock": 12,
     "category": "accesorios",
-    "thumbnails": ["/img/casco_sport.jpg"]
+    "thumbnails": [
+      "/img/casco_sport.jpg"
+    ]
   },
   {
     "id": "prod8",
@@ -85,7 +86,9 @@
     "status": true,
     "stock": 6,
     "category": "ciclomotores",
-    "thumbnails": ["/img/zanella_styler150.jpg"]
+    "thumbnails": [
+      "/img/zanella_styler150.jpg"
+    ]
   },
   {
     "id": "prod9",
@@ -96,7 +99,9 @@
     "status": true,
     "stock": 18,
     "category": "accesorios",
-    "thumbnails": ["/img/alarma_moto.jpg"]
+    "thumbnails": [
+      "/img/alarma_moto.jpg"
+    ]
   },
   {
     "id": "prod10",
@@ -107,6 +112,30 @@
     "status": true,
     "stock": 4,
     "category": "ciclomotores",
-    "thumbnails": ["/img/garelli_vintage125.jpg"]
+    "thumbnails": [
+      "/img/garelli_vintage125.jpg"
+    ]
+  },
+  {
+    "id": "mh0xjvmcltcq6w",
+    "title": "prueba01",
+    "description": "rtewre",
+    "code": "2",
+    "category": "2444",
+    "price": 33333,
+    "stock": 1,
+    "status": true,
+    "thumbnails": []
+  },
+  {
+    "id": "mh0y0j7mdw60eb",
+    "title": "prueba01",
+    "description": "prueba01",
+    "code": "121212",
+    "category": "ciclo",
+    "price": 1212121,
+    "stock": 1,
+    "status": true,
+    "thumbnails": []
   }
 ]
