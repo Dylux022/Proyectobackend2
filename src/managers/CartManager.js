@@ -1,66 +1,114 @@
-const fs = require('fs').promises;
-const path = require('path');
-
-
-const filePath = path.join(__dirname, '../../data/carts.json');
-
-function generateId(){
-  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
-}
+// src/managers/CartManager.js
+const Cart = require('../models/cart.model');
 
 class CartManager {
-  constructor(filepath = filePath){
-    this.filepath = filepath;
+  // Crear carrito vacío
+  async createCart() {
+    const created = await Cart.create({ products: [] });
+    return created.toObject({ virtuals: true });
   }
 
-  async _readFile(){
-    try {
-      const content = await fs.readFile(this.filepath, 'utf8');
-      return JSON.parse(content);
-    } catch (err) {
-      if (err.code === 'ENOENT') {
-        await fs.mkdir(path.dirname(this.filepath), { recursive: true });
-        await fs.writeFile(this.filepath, JSON.stringify([], null, 2));
-        return [];
-      }
-      throw err;
-    }
+  // Obtener carrito por ID (con populate de productos)
+  async getCartById(cid) {
+    const cart = await Cart.findById(cid)
+      .populate({
+        path: 'products.product',
+        select: 'title price category id',
+      })
+      .lean();
+    return cart || null;
   }
 
-  async _writeFile(data){
-    await fs.writeFile(this.filepath, JSON.stringify(data, null, 2));
-  }
+  // Agregar producto (o incrementar cantidad si ya existe)
+  async addProductToCart(cid, pid, quantity = 1) {
+    const cart = await Cart.findById(cid);
+    if (!cart) return null;
 
-  async createCart(){
-    const carts = await this._readFile();
-    const id = generateId();
-    const newCart = { id, products: [] };
-    carts.push(newCart);
-    await this._writeFile(carts);
-    return newCart;
-  }
-
-  async getCartById(cid){
-    const carts = await this._readFile();
-    return carts.find(c => String(c.id) === String(cid)) || null;
-  }
-
-  async addProductToCart(cid, pid, quantity = 1){
-    const carts = await this._readFile();
-    const idx = carts.findIndex(c => String(c.id) === String(cid));
-    if (idx === -1) return null;
-
-    const cart = carts[idx];
-    const prodIdx = cart.products.findIndex(p => String(p.product) === String(pid));
-    if (prodIdx === -1) {
+    const idx = cart.products.findIndex(p => String(p.product) === String(pid));
+    if (idx === -1) {
       cart.products.push({ product: pid, quantity });
     } else {
-      cart.products[prodIdx].quantity += quantity;
+      cart.products[idx].quantity += quantity;
     }
+    await cart.save();
 
-    carts[idx] = cart;
-    await this._writeFile(carts);
-    return cart;
+    const populated = await cart.populate({
+      path: 'products.product',
+      select: 'title price category id',
+    });
+    return populated.toObject({ virtuals: true });
+  }
+
+  // --- Requeridos por la consigna ---
+
+  // Eliminar un producto puntual del carrito
+  async removeProductFromCart(cid, pid) {
+    const cart = await Cart.findById(cid);
+    if (!cart) return null;
+
+    cart.products = cart.products.filter(p => String(p.product) !== String(pid));
+    await cart.save();
+
+    const populated = await cart.populate({
+      path: 'products.product',
+      select: 'title price category id',
+    });
+    return populated.toObject({ virtuals: true });
+  }
+
+  // Reemplazar TODOS los productos del carrito con un arreglo [{ product, quantity }]
+  async replaceCartProducts(cid, productsArray = []) {
+    const cart = await Cart.findById(cid);
+    if (!cart) return null;
+
+    cart.products = (Array.isArray(productsArray) ? productsArray : [])
+      .filter(it => it && it.product)
+      .map(it => ({
+        product: it.product,
+        quantity: Math.max(1, Number(it.quantity) || 1),
+      }));
+
+    await cart.save();
+
+    const populated = await cart.populate({
+      path: 'products.product',
+      select: 'title price category id',
+    });
+    return populated.toObject({ virtuals: true });
+  }
+
+  // Actualizar SOLO la cantidad de un producto
+  async updateProductQuantity(cid, pid, quantity) {
+    const qty = Math.max(1, Number(quantity) || 1);
+    const cart = await Cart.findById(cid);
+    if (!cart) return null;
+
+    const idx = cart.products.findIndex(p => String(p.product) === String(pid));
+    if (idx === -1) return null;
+
+    cart.products[idx].quantity = qty;
+    await cart.save();
+
+    const populated = await cart.populate({
+      path: 'products.product',
+      select: 'title price category id',
+    });
+    return populated.toObject({ virtuals: true });
+  }
+
+  // Vaciar carrito
+  async clearCart(cid) {
+    const cart = await Cart.findById(cid);
+    if (!cart) return null;
+
+    cart.products = [];
+    await cart.save();
+
+    const populated = await cart.populate({
+      path: 'products.product',
+      select: 'title price category id',
+    });
+    return populated.toObject({ virtuals: true });
   }
 }
 
