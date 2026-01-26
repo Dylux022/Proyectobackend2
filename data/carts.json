@@ -1,0 +1,19 @@
+[
+  {
+    "id": "mga2u6xc9vrpwb",
+    "products": []
+  },
+  {
+    "id": "mga2wj8i5wcci6",
+    "products": [
+      {
+        "product": "prod1",
+        "quantity": 1
+      },
+      {
+        "product": "prod2",
+        "quantity": 1
+      }
+    ]
+  }
+]

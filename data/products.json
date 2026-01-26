@@ -1,0 +1,141 @@
+[
+  {
+    "id": "prod2",
+    "title": "zanella zb110",
+    "description": " motor confiable y económico para ciudad.",
+    "code": "KK100",
+    "price": 110000,
+    "status": true,
+    "stock": 5,
+    "category": "ciclomotores",
+    "thumbnails": [
+      "/img/kenia_k100.jpg"
+    ]
+  },
+  {
+    "id": "prod3",
+    "title": "Ciclomotor Kenia K100",
+    "description": "Ciclomotor Kenia, motor confiable y económico para ciudad.",
+    "code": "KK100",
+    "price": 110000,
+    "status": true,
+    "stock": 5,
+    "category": "ciclomotores",
+    "thumbnails": [
+      "/img/kenia_k100.jpg"
+    ]
+  },
+  {
+    "id": "prod4",
+    "title": "Ciclomotor Juki J110",
+    "description": "Ciclomotor Juki J110, compacto y fácil de manejar en tráfico urbano.",
+    "code": "JJ110",
+    "price": 145000,
+    "status": true,
+    "stock": 7,
+    "category": "ciclomotores",
+    "thumbnails": [
+      "/img/juki_j110.jpg"
+    ]
+  },
+  {
+    "id": "prod5",
+    "title": "Cascos Dylux Retro",
+    "description": "Casco estilo retro con visera y detalles reflectantes.",
+    "code": "CAS-DYLUX",
+    "price": 4500,
+    "status": true,
+    "stock": 15,
+    "category": "accesorios",
+    "thumbnails": [
+      "/img/casco_dylux.jpg"
+    ]
+  },
+  {
+    "id": "prod6",
+    "title": "Guantes Motociclista Pro",
+    "description": "Guantes de protección para conducción urbana y deportiva.",
+    "code": "GU-PRO",
+    "price": 2500,
+    "status": true,
+    "stock": 20,
+    "category": "accesorios",
+    "thumbnails": [
+      "/img/guantes_pro.jpg"
+    ]
+  },
+  {
+    "id": "prod7",
+    "title": "Casco Integral Sport",
+    "description": "Casco integral con visera oscura, alta seguridad.",
+    "code": "CAS-SPORT",
+    "price": 7000,
+    "status": true,
+    "stock": 12,
+    "category": "accesorios",
+    "thumbnails": [
+      "/img/casco_sport.jpg"
+    ]
+  },
+  {
+    "id": "prod8",
+    "title": "Ciclomotor Zanella Styler 150",
+    "description": "Ciclomotor Zanella Styler 150, ideal para viajes cortos y urbanos.",
+    "code": "ZS150",
+    "price": 165000,
+    "status": true,
+    "stock": 6,
+    "category": "ciclomotores",
+    "thumbnails": [
+      "/img/zanella_styler150.jpg"
+    ]
+  },
+  {
+    "id": "prod9",
+    "title": "Alarma Antirrobo Moto",
+    "description": "Alarma para ciclomotores, con sensor de movimiento y sonido potente.",
+    "code": "AL-MOTO",
+    "price": 3500,
+    "status": true,
+    "stock": 18,
+    "category": "accesorios",
+    "thumbnails": [
+      "/img/alarma_moto.jpg"
+    ]
+  },
+  {
+    "id": "prod10",
+    "title": "Ciclomotor Garelli Vintage 125",
+    "description": "Garelli Vintage 125, diseño clásico, motor 4 tiempos, ideal para coleccionistas.",
+    "code": "GV125",
+    "price": 185000,
+    "status": true,
+    "stock": 4,
+    "category": "ciclomotores",
+    "thumbnails": [
+      "/img/garelli_vintage125.jpg"
+    ]
+  },
+  {
+    "id": "mh0xjvmcltcq6w",
+    "title": "prueba01",
+    "description": "rtewre",
+    "code": "2",
+    "category": "2444",
+    "price": 33333,
+    "stock": 1,
+    "status": true,
+    "thumbnails": []
+  },
+  {
+    "id": "mh0y0j7mdw60eb",
+    "title": "prueba01",
+    "description": "prueba01",
+    "code": "121212",
+    "category": "ciclo",
+    "price": 1212121,
+    "stock": 1,
+    "status": true,
+    "thumbnails": []
+  }
+]

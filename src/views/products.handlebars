@@ -1,0 +1,45 @@
+<h1>Productos</h1>
+
+<form method="GET" action="/products" style="margin:1rem 0; display:grid; gap:.5rem; max-width:520px;">
+  <div class="row">
+    <input name="query" placeholder="buscar (p.ej. category:ciclomotores o texto: 'zanella')" value="{{query}}" />
+    <select name="sort">
+      <option value="">sin orden</option>
+      <option value="asc">precio asc</option>
+      <option value="desc">precio desc</option>
+    </select>
+  </div>
+  <div class="row">
+    <input name="page" type="number" min="1" value="{{page}}" />
+    <input name="limit" type="number" min="1" max="100" value="{{limit}}" />
+  </div>
+  <button type="submit">Aplicar</button>
+</form>
+
+{{#if payload.length}}
+  {{#each payload}}
+    <div class="card">
+      <strong>{{this.title}}</strong> — ${{this.price}}
+      <div><small>Categoría: {{this.category}}</small></div>
+      <div style="margin-top:.25rem;">
+        <a href="/products/{{this._id}}">Ver detalle</a>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No hay productos.</p>
+{{/if}}
+
+<nav style="display:flex; gap:.5rem; margin-top:1rem;">
+  {{#if hasPrevPage}}
+    <a href="{{prevLink}}">« Anterior</a>
+  {{else}}
+    <span>« Anterior</span>
+  {{/if}}
+  <span>Página {{page}} / {{totalPages}}</span>
+  {{#if hasNextPage}}
+    <a href="{{nextLink}}">Siguiente »</a>
+  {{else}}
+    <span>Siguiente »</span>
+  {{/if}}
+</nav>

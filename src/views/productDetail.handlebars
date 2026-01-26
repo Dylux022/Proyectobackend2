@@ -1,0 +1,45 @@
+<h1>{{product.title}}</h1>
+
+<p>{{product.description}}</p>
+
+<ul>
+  <li><strong>Precio:</strong> ${{product.price}}</li>
+  <li><strong>Categoría:</strong> {{product.category}}</li>
+  <li><strong>Stock:</strong> {{product.stock}}</li>
+  <li><strong>Código:</strong> {{product.code}}</li>
+</ul>
+
+<hr/>
+
+<h3>Agregar al carrito</h3>
+<form id="form-add-to-cart" style="display:grid; gap:.5rem; max-width:420px;">
+  <input name="cid" placeholder="Pegá acá el ID del carrito" required />
+  <input type="hidden" name="pid" value="{{product._id}}" />
+  <div class="row">
+    <input type="number" min="1" name="quantity" value="1" required />
+    <button type="submit">Agregar</button>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById('form-add-to-cart');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const cid = fd.get('cid');
+    const pid = fd.get('pid');
+    const qty = Number(fd.get('quantity')) || 1;
+
+    // hacemos qty veces el POST de add (simple y compatible con tu router actual)
+    for (let i = 0; i < qty; i++) {
+      const res = await fetch(`/api/carts/${cid}/product/${pid}`, { method: 'POST' });
+      if (!res.ok) {
+        const txt = await res.text();
+        alert('Error al agregar: ' + txt);
+        return;
+      }
+    }
+    alert('Producto agregado al carrito');
+    form.reset();
+  });
+</script>
