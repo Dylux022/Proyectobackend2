@@ -5,21 +5,21 @@ const ProductManager = require('../managers/ProductManager');
 const router = express.Router();
 const pm = new ProductManager();
 
-// GET /api/products  (con filtros/paginación/orden y formato exacto de la consigna)
+
 router.get('/', async (req, res) => {
   try {
     let {
       page,
       limit,
-      sort,      // "asc" | "desc" (orden por precio)
-      query,     // "category:mates" o "status:true" o texto libre
+      sort,    
+      query,     
       priceMin,
       priceMax,
       stockMin,
       stockMax,
     } = req.query;
 
-    // Mapear "asc|desc" al esquema interno "price:asc|price:desc"
+   
     let internalSort = undefined;
     if (sort === 'asc') internalSort = 'price:asc';
     else if (sort === 'desc') internalSort = 'price:desc';
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
       stockMax,
     });
 
-    // Links/Pages según consigna
+  
     const base = req.baseUrl || '/api/products';
     const q = new URLSearchParams({ ...req.query });
     const mkLink = (p) => {
@@ -60,7 +60,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /api/products/:pid
+
 router.get('/:pid', async (req, res) => {
   try {
     const product = await pm.getProductById(req.params.pid);
@@ -71,7 +71,7 @@ router.get('/:pid', async (req, res) => {
   }
 });
 
-// POST /api/products
+
 router.post('/', async (req, res) => {
   try {
     const {
@@ -106,7 +106,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/products/:pid
+
 router.put('/:pid', async (req, res) => {
   try {
     if (req.body.id) delete req.body.id;
@@ -118,7 +118,7 @@ router.put('/:pid', async (req, res) => {
   }
 });
 
-// DELETE /api/products/:pid
+
 router.delete('/:pid', async (req, res) => {
   try {
     const ok = await pm.deleteProduct(req.params.pid);

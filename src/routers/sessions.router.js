@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
 
     const token = generateToken(user);
 
-    // Devolvemos token (Authorization Bearer)
+    //  token 
     return res.json({
       status: 'success',
       token,
@@ -59,10 +59,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// CURRENT (passport jwt)
+// CURRENT (
 router.get('/current', passport.authenticate('current', { session: false }), (req, res) => {
-  // req.user viene de la strategy
-  const { password, ...safeUser } = req.user; // sacamos hash
+  
+  const { password, ...safeUser } = req.user; 
   return res.json({ status: 'success', payload: safeUser });
 });
 

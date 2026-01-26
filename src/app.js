@@ -1,4 +1,4 @@
-// --- DEPENDENCIAS ORIGINALES ---
+
 const express = require('express');
 const path = require('path');
 const { engine } = require('express-handlebars');
@@ -11,7 +11,7 @@ const cartsRouter = require('./routers/carts.router');
 const viewsRouter = require('./routers/views.router');
 const sessionsRouter = require('./routers/sessions.router');
 
-// ProductManager (Backend 1)
+// ProductManager 
 const ProductManager = require('./../src/managers/ProductManager');
 const pm = new ProductManager();
 

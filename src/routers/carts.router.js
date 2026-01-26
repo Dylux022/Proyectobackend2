@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Ver productos del carrito (populate ya aplicado en el manager)
+// Ver productos del carrito 
 router.get('/:cid', async (req, res) => {
   try {
     const cart = await cm.getCartById(req.params.cid);
@@ -45,9 +45,9 @@ router.post('/:cid/product/:pid', async (req, res) => {
   }
 });
 
-// --- Requeridos por consigna ---
 
-// DELETE api/carts/:cid/products/:pid -> eliminar un producto del carrito
+
+// eliminar un producto del carrito
 router.delete('/:cid/products/:pid', async (req, res) => {
   try {
     const { cid, pid } = req.params;
@@ -59,7 +59,7 @@ router.delete('/:cid/products/:pid', async (req, res) => {
   }
 });
 
-// PUT api/carts/:cid -> reemplazar TODOS los productos con un arreglo [{ product, quantity }]
+
 router.put('/:cid', async (req, res) => {
   try {
     const { products } = req.body;
@@ -71,7 +71,7 @@ router.put('/:cid', async (req, res) => {
   }
 });
 
-// PUT api/carts/:cid/products/:pid -> actualizar SOLO la cantidad
+// actualizar SOLO la cantidad
 router.put('/:cid/products/:pid', async (req, res) => {
   try {
     const { quantity } = req.body;
@@ -86,7 +86,7 @@ router.put('/:cid/products/:pid', async (req, res) => {
   }
 });
 
-// DELETE api/carts/:cid -> vaciar carrito
+// vaciar carrito
 router.delete('/:cid', async (req, res) => {
   try {
     const cleared = await cm.clearCart(req.params.cid);

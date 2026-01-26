@@ -8,19 +8,19 @@ const router = Router();
 const pm = new ProductManager();
 const cm = new CartManager();
 
-// /home (vista original)
+// /home 
 router.get('/home', async (req, res) => {
   const products = await pm.getProducts();
   res.render('home', { title: 'Home', products });
 });
 
-// /realtimeproducts (vista original)
+// /realtimeproducts 
 router.get('/realtimeproducts', async (req, res) => {
   const products = await pm.getProducts();
   res.render('realTimeProducts', { title: 'Real Time', products });
 });
 
-// /products (lista paginada con filtros y orden)
+// /products 
 router.get('/products', async (req, res) => {
   const { page, limit, sort, query, priceMin, priceMax, stockMin, stockMax } = req.query;
 
@@ -59,18 +59,18 @@ router.get('/products', async (req, res) => {
   });
 });
 
-// /products/:pid (detalle)
+
 router.get('/products/:pid', async (req, res) => {
   const prod = await Product.findById(req.params.pid).lean();
   if (!prod) return res.status(404).send('Producto no encontrado');
   res.render('productDetail', { title: prod.title, product: prod });
 });
 
-// /carts/:cid (vista de carrito)
+
 router.get('/carts/:cid', async (req, res) => {
   const cart = await cm.getCartById(req.params.cid);
   if (!cart) return res.status(404).send('Carrito no encontrado');
-  // usar _id como respaldo si el virtual id no viene en lean()
+  
   res.render('cart', { title: `Carrito ${cart.id || cart._id}`, cart });
 });
 

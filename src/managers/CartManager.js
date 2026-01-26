@@ -8,7 +8,7 @@ class CartManager {
     return created.toObject({ virtuals: true });
   }
 
-  // Obtener carrito por ID (con populate de productos)
+  // Obtener carrito por ID 
   async getCartById(cid) {
     const cart = await Cart.findById(cid)
       .populate({
@@ -39,7 +39,7 @@ class CartManager {
     return populated.toObject({ virtuals: true });
   }
 
-  // --- Requeridos por la consigna ---
+ 
 
   // Eliminar un producto puntual del carrito
   async removeProductFromCart(cid, pid) {
@@ -56,7 +56,7 @@ class CartManager {
     return populated.toObject({ virtuals: true });
   }
 
-  // Reemplazar TODOS los productos del carrito con un arreglo [{ product, quantity }]
+ 
   async replaceCartProducts(cid, productsArray = []) {
     const cart = await Cart.findById(cid);
     if (!cart) return null;

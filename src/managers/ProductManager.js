@@ -7,8 +7,8 @@ class ProductManager {
     const {
       page = 1,
       limit = 10,
-      sort,              // 'price:asc' | 'price:desc' | 'stock:asc' | '-price'
-      query,             // 'category:mates,status:true' o texto libre
+      sort,              
+      query,             
       priceMin,
       priceMax,
       stockMin,
@@ -20,7 +20,7 @@ class ProductManager {
 
     if (query) {
       if (query.includes(':')) {
-        // pares clave:valor separados por coma (category:mates,status:true)
+     
         const pairs = query.split(',').map(s => s.trim()).filter(Boolean);
         for (const p of pairs) {
           const [k, v] = p.split(':').map(s => s.trim());
@@ -31,7 +31,7 @@ class ProductManager {
           else filter[k] = v; // campo libre
         }
       } else {
-        // texto libre → busca en title/description (case-insensitive)
+        
         filter.$or = [
           { title: { $regex: query, $options: 'i' } },
           { description: { $regex: query, $options: 'i' } },
@@ -88,7 +88,7 @@ class ProductManager {
     };
   }
 
-  // --- CRUD base (compatibles con tus routers/sockets) ---
+  // --- CRUD ---
   async getProducts() {
     return await Product.find().lean();
   }
