@@ -4,6 +4,7 @@ const path = require('path');
 const { engine } = require('express-handlebars');
 const http = require('http');
 const { Server } = require('socket.io');
+const cookieParser = require('cookie-parser');
 
 // Routers
 const productsRouter = require('./routers/products.router');
@@ -59,6 +60,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // -------------------- MIDDLEWARES --------------------
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
